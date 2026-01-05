@@ -3,7 +3,22 @@ guid: 808895bcc8394064a99cb3f20e3b20a9
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: b6b3bfead9824bd4991fd8b89011afc9, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dark-wood-parquet
+    second: {fileID: 2800000, guid: 397d320161e172d48b0f27d90642ab08, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_normal
+    second: {fileID: 2800000, guid: 2a568b08421ce9e409fe0187388b5242, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

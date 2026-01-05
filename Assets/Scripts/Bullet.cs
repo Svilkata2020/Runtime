@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Bullet : MonoBehaviour
 {
@@ -39,21 +40,33 @@ public class Bullet : MonoBehaviour
         foreach (Collider collider in colliders) 
         {
             Rigidbody rbCollider = collider.GetComponent<Rigidbody>();
-            
+
+            if (collider.gameObject.CompareTag("Enemy"))
+            {
+                
+                collider.GetComponent<NavMeshAgent>().enabled = false;
+                ApplyExplosionForce(rbCollider);
+                collider.GetComponent<Enemy>().DisableGroundCheck();
+            }
             if(rbCollider != null)
             {
-                rbCollider.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardsModifier, ForceMode.Impulse);
+                ApplyExplosionForce(rbCollider);
             }
             else
             {
                 rbCollider = collider.GetComponentInParent<Rigidbody>();
                 if (rbCollider != null)
                 {
-                    rbCollider.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardsModifier, ForceMode.Impulse);
+                    ApplyExplosionForce(rbCollider);
                 }
             }
         }
 
+    }
+
+    void ApplyExplosionForce(Rigidbody rb)
+    {
+        rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, upwardsModifier, ForceMode.Impulse);
     }
 
 }
